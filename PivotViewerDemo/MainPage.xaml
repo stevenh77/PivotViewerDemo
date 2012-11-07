@@ -1,0 +1,134 @@
+﻿<UserControl x:Class="PivotViewerDemo.MainPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pivot="clr-namespace:System.Windows.Controls.Pivot;assembly=System.Windows.Controls.Pivot"
+             xmlns:local="clr-namespace:PivotViewerDemo"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="400">
+    <UserControl.Resources>
+        
+        <pivot:PivotViewerItemTemplate x:Key="PriceTemplate">
+            <Border Width="300" 
+                    Height="300"
+                    Background="{Binding MaturityColour, Mode=OneTime}">
+                
+                <!--    <TextBlock Text="{Binding Underlying}"
+                           FontSize="32"
+                           FontFamily="SegoeUI"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />-->
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="2.5*" />
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Maturity"
+                               FontSize="12"
+                               FontFamily="Segoe UI"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+
+                    <TextBlock Text="{Binding Maturity, Mode=OneTime}"
+                               FontSize="22"
+                               FontFamily="Segoe UI"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Row="1" />
+
+                    <TextBlock Text="Barrier"
+                               FontSize="12"
+                               FontFamily="Segoe UI"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Column="2" />
+
+                    <TextBlock Text="{Binding Barrier, Mode=OneTime}"
+                               FontSize="22"
+                               FontFamily="Segoe UI"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Row="1"
+                               Grid.Column="2" />
+
+                    <TextBlock Text="{Binding CouponToday, Mode=OneTime}"
+                               FontSize="100"
+                               FontFamily="Segoe UI Light"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom"
+                               Grid.Row="2"
+                               Grid.ColumnSpan="3"/>
+
+                    <TextBlock Text="{Binding Underlying, Mode=OneTime}"
+                               FontSize="32"
+                               FontFamily="Segoe UI"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Row="3"
+                               Grid.ColumnSpan="3"
+                               TextWrapping="Wrap" />
+
+                    <TextBlock Text="{Binding Sector, Mode=OneTime}"
+                               FontSize="22"
+                               FontFamily="Segoe UI"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Grid.Row="4"
+                               Grid.ColumnSpan="2"
+                               Margin="10,0,0,5" />
+
+                    <TextBlock Text="{Binding Currency, Mode=OneTime}"
+                               FontSize="22"
+                               FontFamily="Segoe UI"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Grid.Row="4"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               Margin="0,0,10,5"/>
+
+                </Grid>
+            </Border>
+        </pivot:PivotViewerItemTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot"
+          Background="White">
+        <pivot:PivotViewer x:Name="pivotViewer"
+                           SortPivotProperty="{Binding CouponToday}">
+            <pivot:PivotViewer.PivotProperties>
+                <pivot:PivotViewerNumericProperty Id="Barrier"
+                                                  Options="CanFilter"
+                                                  Binding="{Binding Barrier}" />
+                <pivot:PivotViewerStringProperty Id="Underlying"
+                                                 Options="WrappingText"
+                                                 Binding="{Binding Underlying}" />
+                <pivot:PivotViewerStringProperty Id="Maturity"
+                                                 Options="CanFilter"
+                                                 Binding="{Binding Maturity}" />
+                <pivot:PivotViewerStringProperty Id="Sector"
+                                                 Options="CanFilter,CanSearchText"
+                                                 Binding="{Binding Sector}" />
+                <pivot:PivotViewerStringProperty Id="Currency"
+                                                 Options="CanFilter"
+                                                 Binding="{Binding Currency}" />
+                <pivot:PivotViewerNumericProperty Id="CouponToday"
+                                                  DisplayName="Coupon Today"
+                                                  Options="CanFilter"
+                                                  Binding="{Binding CouponToday}" />
+            </pivot:PivotViewer.PivotProperties>
+        </pivot:PivotViewer>
+    </Grid>
+</UserControl>
