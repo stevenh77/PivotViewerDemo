@@ -113,7 +113,7 @@
                                                   Options="CanFilter"
                                                   Binding="{Binding Barrier}" />
                 <pivot:PivotViewerStringProperty Id="Underlying"
-                                                 Options="WrappingText"
+                                                 Options="CanFilter,CanSearchText"
                                                  Binding="{Binding Underlying}" />
                 <pivot:PivotViewerStringProperty Id="Maturity"
                                                  Options="CanFilter"
