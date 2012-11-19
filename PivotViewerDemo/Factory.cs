@@ -9,6 +9,7 @@ namespace PivotViewerDemo
         public static ObservableCollection<Price> GetData()
         {
             var data = Factory.BuildData();
+
             var filteredList = data.Where(x => x.CouponToday > 0 && (x.Barrier == 60 || x.Barrier == 70 || x.Barrier == 80));
             return new ObservableCollection<Price>(filteredList);
         }

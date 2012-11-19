@@ -59,8 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientBin\PivotViewerDemo.xap" />
-    <Content Include="PivotViewerDemoTestPage.aspx" />
-    <Content Include="PivotViewerDemoTestPage.html" />
+    <Content Include="index.html" />
     <Content Include="Silverlight.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -89,7 +88,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>7016</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:1565/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

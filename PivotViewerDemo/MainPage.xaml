@@ -4,131 +4,310 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pivot="clr-namespace:System.Windows.Controls.Pivot;assembly=System.Windows.Controls.Pivot"
-             xmlns:local="clr-namespace:PivotViewerDemo"
-             mc:Ignorable="d"
-             d:DesignHeight="300"
-             d:DesignWidth="400">
-    <UserControl.Resources>
-        
-        <pivot:PivotViewerItemTemplate x:Key="PriceTemplate">
-            <Border Width="300" 
-                    Height="300"
-                    Background="{Binding MaturityColour, Mode=OneTime}">
-                
-                <!--    <TextBlock Text="{Binding Underlying}"
-                           FontSize="32"
-                           FontFamily="SegoeUI"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center" />-->
+             mc:Ignorable="d">
+        <pivot:PivotViewer x:Name="pivotViewer">
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="4*" />
-                        <RowDefinition Height="2.5*" />
-                        <RowDefinition Height="2*" />
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Text="Maturity"
-                               FontSize="12"
-                               FontFamily="Segoe UI"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center" />
-
-                    <TextBlock Text="{Binding Maturity, Mode=OneTime}"
-                               FontSize="22"
-                               FontFamily="Segoe UI"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Grid.Row="1" />
-
-                    <TextBlock Text="Barrier"
-                               FontSize="12"
-                               FontFamily="Segoe UI"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Grid.Column="2" />
-
-                    <TextBlock Text="{Binding Barrier, Mode=OneTime}"
-                               FontSize="22"
-                               FontFamily="Segoe UI"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Grid.Row="1"
-                               Grid.Column="2" />
-
-                    <TextBlock Text="{Binding CouponToday, Mode=OneTime}"
-                               FontSize="100"
-                               FontFamily="Segoe UI Light"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Bottom"
-                               Grid.Row="2"
-                               Grid.ColumnSpan="3"/>
-
-                    <TextBlock Text="{Binding Underlying, Mode=OneTime}"
-                               FontSize="32"
-                               FontFamily="Segoe UI"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Grid.Row="3"
-                               Grid.ColumnSpan="3"
-                               TextWrapping="Wrap" />
-
-                    <TextBlock Text="{Binding Sector, Mode=OneTime}"
-                               FontSize="22"
-                               FontFamily="Segoe UI"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Grid.Row="4"
-                               Grid.ColumnSpan="2"
-                               Margin="10,0,0,5" />
-
-                    <TextBlock Text="{Binding Currency, Mode=OneTime}"
-                               FontSize="22"
-                               FontFamily="Segoe UI"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Grid.Row="4"
-                               Grid.Column="1"
-                               Grid.ColumnSpan="2"
-                               Margin="0,0,10,5"/>
-
-                </Grid>
-            </Border>
-        </pivot:PivotViewerItemTemplate>
-    </UserControl.Resources>
-    <Grid x:Name="LayoutRoot"
-          Background="White">
-        <pivot:PivotViewer x:Name="pivotViewer"
-                           SortPivotProperty="{Binding CouponToday}">
             <pivot:PivotViewer.PivotProperties>
-                <pivot:PivotViewerNumericProperty Id="Barrier"
-                                                  Options="CanFilter"
-                                                  Binding="{Binding Barrier}" />
-                <pivot:PivotViewerStringProperty Id="Underlying"
-                                                 Options="CanFilter,CanSearchText"
-                                                 Binding="{Binding Underlying}" />
-                <pivot:PivotViewerStringProperty Id="Maturity"
-                                                 Options="CanFilter"
-                                                 Binding="{Binding Maturity}" />
-                <pivot:PivotViewerStringProperty Id="Sector"
-                                                 Options="CanFilter,CanSearchText"
-                                                 Binding="{Binding Sector}" />
-                <pivot:PivotViewerStringProperty Id="Currency"
-                                                 Options="CanFilter"
-                                                 Binding="{Binding Currency}" />
                 <pivot:PivotViewerNumericProperty Id="CouponToday"
                                                   DisplayName="Coupon Today"
                                                   Options="CanFilter"
-                                                  Binding="{Binding CouponToday}" />
+                                                  Binding="{Binding CouponToday, Mode=OneWay}" />
+                <pivot:PivotViewerNumericProperty Id="Barrier"
+                                                  Options="CanFilter"
+                                                  Binding="{Binding Barrier, Mode=OneWay}" />
+                <pivot:PivotViewerStringProperty Id="Underlying"
+                                                 Options="CanFilter,CanSearchText"
+                                                 Binding="{Binding Underlying, Mode=OneWay}" />
+                <pivot:PivotViewerStringProperty Id="Maturity"
+                                                 Options="CanFilter"
+                                                 Binding="{Binding Maturity, Mode=OneWay}" />
+                <pivot:PivotViewerStringProperty Id="Sector"
+                                                 Options="CanFilter,CanSearchText"
+                                                 Binding="{Binding Sector, Mode=OneWay}" />
+                <pivot:PivotViewerStringProperty Id="Currency"
+                                                 Options="CanFilter"
+                                                 Binding="{Binding Currency, Mode=OneWay}" />
             </pivot:PivotViewer.PivotProperties>
+
+            <pivot:PivotViewer.ItemTemplates>
+
+                <pivot:PivotViewerItemTemplate MaxWidth="150">
+                    <Grid Height="150"
+                          Width="150"
+                          Background="{Binding MaturityColour, Mode=OneTime}" />
+                </pivot:PivotViewerItemTemplate>
+
+                <pivot:PivotViewerItemTemplate>
+                    <Border Width="300"
+                            Height="300"
+                            Background="{Binding MaturityColour, Mode=OneTime}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="4*" />
+                                <RowDefinition Height="2.5*" />
+                                <RowDefinition Height="2*" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Maturity"
+                                       FontSize="12"
+                                       FontFamily="Segoe UI"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+
+                            <TextBlock Text="{Binding Maturity, Mode=OneTime}"
+                                       FontSize="22"
+                                       FontFamily="Segoe UI"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Grid.Row="1" />
+
+                            <TextBlock Text="Barrier"
+                                       FontSize="12"
+                                       FontFamily="Segoe UI"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Grid.Column="2" />
+
+                            <TextBlock Text="{Binding Barrier, Mode=OneTime}"
+                                       FontSize="22"
+                                       FontFamily="Segoe UI"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Grid.Row="1"
+                                       Grid.Column="2" />
+
+                            <TextBlock Text="{Binding CouponToday, Mode=OneTime}"
+                                       FontSize="100"
+                                       FontFamily="Segoe UI Light"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom"
+                                       Grid.Row="2"
+                                       Grid.ColumnSpan="3" />
+
+                            <TextBlock Text="{Binding Underlying, Mode=OneTime}"
+                                       FontSize="32"
+                                       FontFamily="Segoe UI"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Grid.Row="3"
+                                       Grid.ColumnSpan="3"
+                                       TextWrapping="Wrap" />
+
+                            <TextBlock Text="{Binding Sector, Mode=OneTime}"
+                                       FontSize="22"
+                                       FontFamily="Segoe UI"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Grid.Row="4"
+                                       Grid.ColumnSpan="2"
+                                       Margin="10,0,0,5" />
+
+                            <TextBlock Text="{Binding Currency, Mode=OneTime}"
+                                       FontSize="22"
+                                       FontFamily="Segoe UI"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       Grid.Row="4"
+                                       Grid.Column="1"
+                                       Grid.ColumnSpan="2"
+                                       Margin="0,0,10,5" />
+
+                        </Grid>
+                    </Border>
+                </pivot:PivotViewerItemTemplate>
+            </pivot:PivotViewer.ItemTemplates>
+
+            <pivot:PivotViewer.ItemAdornerStyle>
+                <Style TargetType="pivot:PivotViewerItemAdorner">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="pivot:PivotViewerItemAdorner">
+                                <pivot:PivotViewerDefaultItemAdorner IsTabStop="False" CommandsRequested="GetCommands" IsItemSelected="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsItemSelected}" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </pivot:PivotViewer.ItemAdornerStyle>
+
+            <pivot:PivotViewer.FilterPaneStyle>
+                <Style TargetType="pivot:PivotViewerFilterPane">
+                    <Setter Property="Foreground"
+                            Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="Background"
+                            Value="{Binding Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="BorderBrush"
+                            Value="{Binding BorderBrush, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="AccentColor"
+                            Value="{Binding AccentColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="Background"
+                            Value="{Binding SecondaryBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="ControlBackground"
+                            Value="{Binding ControlBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="SecondaryForeground"
+                            Value="{Binding SecondaryForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                   <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="pivot:PivotViewerFilterPane">
+                                <Grid x:Name="FilterPaneRoot"
+                                      Background="Transparent"
+                                      Width="185"
+                                      Margin="5,5,0,5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="35" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+
+                                    <Rectangle Fill="{TemplateBinding SecondaryBackground}"
+                                               Grid.RowSpan="3"
+                                               RadiusX="3"
+                                               RadiusY="2"
+                                               IsHitTestVisible="False" />
+                                    <Rectangle x:Name="m_Background"
+                                               Fill="{TemplateBinding SecondaryBackground}"
+                                               Stroke="{TemplateBinding BorderBrush}"
+                                               Grid.RowSpan="3"
+                                               RadiusX="3"
+                                               RadiusY="2" />
+                                    <Button x:Name="PART_ClearAllButton"
+                                            AutomationProperties.Name="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ClearAllButtonText}"
+                                            Grid.Row="0"
+                                            Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ClearAllButtonText}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            HorizontalContentAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                            Height="25"
+                                            Margin="2,4,4,4" />
+                                    <ContentControl HorizontalContentAlignment="Stretch"
+                                                    Grid.Row="1"
+                                                    x:Name="PART_CustomSearchBoxContainer"
+                                                    Margin="4,0,4,3"
+                                                    IsTabStop="False">
+                                    </ContentControl>
+
+                                    <ScrollViewer x:Name="PART_CategoriesContainer"
+                                                  VerticalScrollBarVisibility="Auto"
+                                                  HorizontalScrollBarVisibility="Disabled"
+                                                  Grid.Row="2"
+                                                  BorderBrush="{x:Null}"
+                                                  Padding="1"
+                                                  IsTabStop="False">
+                                    </ScrollViewer>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </pivot:PivotViewer.FilterPaneStyle>
+            
+            <pivot:PivotViewer.DetailPaneStyle>
+                <Style TargetType="pivot:PivotViewerDetailPane">
+                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="BorderBrush" Value="{Binding BorderBrush, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="AccentColor" Value="{Binding AccentColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="Background" Value="{Binding SecondaryBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="ControlBackground" Value="{Binding ControlBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="SecondaryForeground" Value="{Binding SecondaryForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="PrimaryItemValueBackgroundColor" Value="{Binding PrimaryItemValueBackgroundColor, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="SecondaryItemValueBackgroundColor" Value="{Binding SecondaryItemValueBackgroundColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=pivot:PivotViewer}}" />
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <Border Background="{Binding MaturityColour, Mode=OneTime}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*" />
+                                            <RowDefinition Height="1*" />
+                                            <RowDefinition Height="4*" />
+                                            <RowDefinition Height="2.5*" />
+                                            <RowDefinition Height="2*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="Maturity"
+                                                   FontSize="12"
+                                                   FontFamily="Segoe UI"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center" />
+
+                                        <TextBlock Text="{Binding Maturity, Mode=OneTime}"
+                                                   FontSize="22"
+                                                   FontFamily="Segoe UI"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Grid.Row="1" />
+
+                                        <TextBlock Text="Barrier"
+                                                   FontSize="12"
+                                                   FontFamily="Segoe UI"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Grid.Column="2" />
+
+                                        <TextBlock Text="{Binding Barrier, Mode=OneTime}"
+                                                   FontSize="22"
+                                                   FontFamily="Segoe UI"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Grid.Row="1"
+                                                   Grid.Column="2" />
+
+                                        <TextBlock Text="{Binding CouponToday, Mode=OneTime}"
+                                                   FontSize="100"
+                                                   FontFamily="Segoe UI Light"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Bottom"
+                                                   Grid.Row="2"
+                                                   Grid.ColumnSpan="3" />
+
+                                        <TextBlock Text="{Binding Underlying, Mode=OneTime}"
+                                                   FontSize="32"
+                                                   FontFamily="Segoe UI"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Grid.Row="3"
+                                                   Grid.ColumnSpan="3"
+                                                   TextWrapping="Wrap" />
+
+                                        <TextBlock Text="{Binding Sector, Mode=OneTime}"
+                                                   FontSize="22"
+                                                   FontFamily="Segoe UI"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Grid.Row="4"
+                                                   Grid.ColumnSpan="2"
+                                                   Margin="10,0,0,5" />
+
+                                        <TextBlock Text="{Binding Currency, Mode=OneTime}"
+                                                   FontSize="22"
+                                                   FontFamily="Segoe UI"
+                                                   HorizontalAlignment="Right"
+                                                   VerticalAlignment="Center"
+                                                   Grid.Row="4"
+                                                   Grid.Column="1"
+                                                   Grid.ColumnSpan="2"
+                                                   Margin="0,0,10,5" />
+
+                                    </Grid>
+                                </Border>
+                             </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </pivot:PivotViewer.DetailPaneStyle>
         </pivot:PivotViewer>
-    </Grid>
 </UserControl>
