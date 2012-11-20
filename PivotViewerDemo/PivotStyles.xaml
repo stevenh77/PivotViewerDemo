@@ -131,7 +131,7 @@
         </Setter>
     </Style>
 
-    <!--<Style TargetType="sdk:PivotViewerDefaultItemAdorner">
+    <Style TargetType="sdk:PivotViewerDefaultItemAdorner">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="sdk:PivotViewerDefaultItemAdorner">
@@ -295,7 +295,7 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-            </Style>-->
+            </Style>
 
     <!-- Default template for a ContentControl filled with a background color -->
     <ControlTemplate x:Key="BackgroundContentControlTemplate"
@@ -5639,7 +5639,7 @@
 
     <!-- Begin FilterPane Default Style -->
 
-    <Style TargetType="sdk:PivotViewerFilterPane">
+    <Style x:Key="PivotViewerFilterPaneStyle" TargetType="sdk:PivotViewerFilterPane">
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"
@@ -5722,7 +5722,7 @@
 
     <!-- End FilterPaneView Default Style -->
 
-    <Style TargetType="sdk:PivotViewerDetailPane">
+    <Style x:Key="PivotViewerDetailPaneStyle" TargetType="sdk:PivotViewerDetailPane">
         <Setter Property="Foreground"
                 Value="Black" />
         <Setter Property="Background"

@@ -5,9 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pivot="clr-namespace:System.Windows.Controls.Pivot;assembly=System.Windows.Controls.Pivot"
              mc:Ignorable="d">
-        <pivot:PivotViewer x:Name="pivotViewer">
 
-            <pivot:PivotViewer.PivotProperties>
+    <pivot:PivotViewer x:Name="pivotViewer"
+                       FilterPaneStyle="{StaticResource PivotViewerFilterPaneStyle}"
+                       DetailPaneStyle="{StaticResource PivotViewerDetailPaneStyle}">
+
+        <pivot:PivotViewer.PivotProperties>
                 <pivot:PivotViewerNumericProperty Id="CouponToday"
                                                   DisplayName="Coupon Today"
                                                   Options="CanFilter"
@@ -125,7 +128,7 @@
                 </pivot:PivotViewerItemTemplate>
             </pivot:PivotViewer.ItemTemplates>
 
-            <pivot:PivotViewer.ItemAdornerStyle>
+            <!--<pivot:PivotViewer.ItemAdornerStyle>
                 <Style TargetType="pivot:PivotViewerItemAdorner">
                     <Setter Property="Template">
                         <Setter.Value>
@@ -308,6 +311,6 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-            </pivot:PivotViewer.DetailPaneStyle>
+            </pivot:PivotViewer.DetailPaneStyle>-->
         </pivot:PivotViewer>
 </UserControl>
