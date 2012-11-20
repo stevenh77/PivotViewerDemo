@@ -5651,7 +5651,7 @@
         <Setter Property="BorderBrush"
                 Value="DarkOliveGreen" />
         <Setter Property="AccentColor"
-                Value="Blue" />
+                Value="#54b0df" />
         <Setter Property="SecondaryBackground"
                 Value="GhostWhite" />
         <Setter Property="ControlBackground"
@@ -5730,7 +5730,7 @@
         <Setter Property="BorderBrush"
                 Value="DarkOliveGreen" />
         <Setter Property="AccentColor"
-                Value="Blue" />
+                Value="#54b0df" />
         <Setter Property="ControlBackground"
                 Value="LightGray" />
         <Setter Property="SecondaryForeground"

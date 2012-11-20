@@ -5,7 +5,13 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="PivotStyles.xaml" />
+                <ResourceDictionary Source="Styles/accordion.xaml" />
+                <ResourceDictionary Source="Styles/accordionbutton.xaml" />
+                <ResourceDictionary Source="Styles/accordionitem.xaml" />
+                <ResourceDictionary Source="Styles/expandablecontentcontrol.xaml" />
+                <ResourceDictionary Source="Styles/generic.xaml" />
+                <ResourceDictionary Source="Styles/headeredcontentcontrol.xaml" />
+                <ResourceDictionary Source="Styles/layouttransformer.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
