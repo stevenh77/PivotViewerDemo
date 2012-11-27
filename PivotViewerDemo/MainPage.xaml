@@ -10,33 +10,37 @@
                        FilterPaneStyle="{StaticResource PivotViewerFilterPaneStyle}"
                        DetailPaneStyle="{StaticResource PivotViewerDetailPaneStyle}">
 
-        <pivot:PivotViewer.PivotProperties>
-                <pivot:PivotViewerNumericProperty Id="CouponToday"
-                                                  DisplayName="Coupon Today"
-                                                  Options="CanFilter"
-                                                  Binding="{Binding CouponToday, Mode=OneWay}" />
-                <pivot:PivotViewerNumericProperty Id="Barrier"
-                                                  Options="CanFilter"
-                                                  Binding="{Binding Barrier, Mode=OneWay}" />
-                <pivot:PivotViewerStringProperty Id="Underlying"
-                                                 Options="CanFilter,CanSearchText"
-                                                 Binding="{Binding Underlying, Mode=OneWay}" />
-                <pivot:PivotViewerStringProperty Id="Maturity"
-                                                 Options="CanFilter"
-                                                 Binding="{Binding Maturity, Mode=OneWay}" />
-                <pivot:PivotViewerStringProperty Id="Sector"
-                                                 Options="CanFilter,CanSearchText"
-                                                 Binding="{Binding Sector, Mode=OneWay}" />
-                <pivot:PivotViewerStringProperty Id="Currency"
-                                                 Options="CanFilter"
-                                                 Binding="{Binding Currency, Mode=OneWay}" />
-            </pivot:PivotViewer.PivotProperties>
+<pivot:PivotViewer.PivotProperties>
+    <pivot:PivotViewerStringProperty Id="SectorSort"
+                                        DisplayName="Sector"
+                                        Options="CanFilter,CanSearchText"
+                                        Binding="{Binding SectorSort, Mode=OneWay}" />
+    <pivot:PivotViewerNumericProperty Id="CouponToday"
+                                        DisplayName="Coupon Today"
+                                        Options="CanFilter"
+                                        Binding="{Binding CouponToday, Mode=OneWay}" />
+    <pivot:PivotViewerNumericProperty Id="Barrier"
+                                        Options="CanFilter"
+                                        Binding="{Binding Barrier, Mode=OneWay}" />
+    <pivot:PivotViewerStringProperty Id="Underlying"
+                                        Options="CanFilter,CanSearchText"
+                                        Binding="{Binding Underlying, Mode=OneWay}" />
+    <pivot:PivotViewerStringProperty Id="Maturity"
+                                        Options="CanFilter"
+                                        Binding="{Binding Maturity, Mode=OneWay}" />
+    <pivot:PivotViewerStringProperty Id="Sector"
+                                        Options="CanFilter,CanSearchText"
+                                        Binding="{Binding Sector, Mode=OneWay}" />
+    <pivot:PivotViewerStringProperty Id="Currency"
+                                        Options="CanFilter"
+                                        Binding="{Binding Currency, Mode=OneWay}" />
+    </pivot:PivotViewer.PivotProperties>
 
             <pivot:PivotViewer.ItemTemplates>
 
-                <pivot:PivotViewerItemTemplate MaxWidth="150">
-                    <Grid Height="150"
-                          Width="150"
+                <pivot:PivotViewerItemTemplate MaxWidth="75">
+                    <Grid Height="75"
+                          Width="75"
                           Background="{Binding MaturityColour, Mode=OneTime}" />
                 </pivot:PivotViewerItemTemplate>
 

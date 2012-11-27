@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Media;
 
 namespace PivotViewerDemo
@@ -40,6 +41,12 @@ namespace PivotViewerDemo
         {
             get { return sector; }
             set { sector = value; NotifyProperty("Sector"); }
+        }
+
+        private ValueSortByCoupon sectorSort;
+        public ValueSortByCoupon SectorSort
+        {
+            get { return sectorSort ?? (sectorSort = new ValueSortByCoupon(Sector, CouponToday)); }
         }
 
         private string underlying;
@@ -91,4 +98,30 @@ namespace PivotViewerDemo
 
         #endregion
     }
+
+public class ValueSortByCoupon : IComparable
+{
+    private string Value { get; set; }
+    private decimal Coupon { get; set; }
+
+    public ValueSortByCoupon(string sector, decimal coupon)
+    {
+        this.Value = sector;
+        this.Coupon = coupon;
+    }
+
+    public int CompareTo(object rhs)
+    {
+        var other = (ValueSortByCoupon)rhs;
+        var result = this.Value == other.Value
+                    ? other.Coupon.CompareTo(this.Coupon)
+                    : this.Value.CompareTo(other.Value);
+        return result;
+    }
+
+    public override string ToString()
+    {
+        return Value;
+    }
+}
 }
